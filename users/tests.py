@@ -3,6 +3,12 @@ from django.urls import reverse
 
 
 class UserAuthenticationTests(TestCase):
+    def test_health_check(self):
+        response = self.client.get(reverse("health"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {"status": "ok"})
+
     def test_google_login_page_is_available(self):
         response = self.client.get(reverse("users:login"))
 
