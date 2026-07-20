@@ -17,36 +17,34 @@
             상대의 공격에 사용할 카드를 선택해주세요.
         </p>
 
-        <div class="card-list">
-            <label class="card-option">
-                <input type="radio" name="card" value="1">
-                <span class="number-card">1</span>
-            </label>
+        <form method="post" class="counter-form">
+            {% csrf_token %}
 
-            <label class="card-option">
-                <input type="radio" name="card" value="3">
-                <span class="number-card">3</span>
-            </label>
+            {% if form.non_field_errors %}
+                <ul class="attack-errors">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
 
-            <label class="card-option">
-                <input type="radio" name="card" value="5">
-                <span class="number-card">5</span>
-            </label>
+            <div class="card-list">
+                {% for radio in form.defender_card %}
+                    <label class="card-option">
+                        {{ radio.tag }}
+                        <span class="number-card">{{ radio.choice_label }}</span>
+                    </label>
+                {% endfor %}
+            </div>
 
-            <label class="card-option">
-                <input type="radio" name="card" value="7">
-                <span class="number-card">7</span>
-            </label>
+            {% for error in form.defender_card.errors %}
+                <p class="attack-error">{{ error }}</p>
+            {% endfor %}
 
-            <label class="card-option">
-                <input type="radio" name="card" value="9">
-                <span class="number-card">9</span>
-            </label>
-        </div>
-
-        <button type="button" class="counter-button">
-            반격하기
-        </button>
+            <button type="submit" class="counter-button">
+                반격하기
+            </button>
+        </form>
 
     </div>
 </section>

@@ -37,14 +37,15 @@
                             </span>
 
                         {% elif game.attacker == user %}
-                            {# TODO: 게임 취소 view 생기면 form action 연결 #}
-                            <button type="button" class="history-button">
-                                진행 중... 게임 취소
-                            </button>
+                            <form method="post" action="{% url 'games:cancel' game.pk %}">
+                                {% csrf_token %}
+                                <button type="submit" class="history-button">
+                                    진행 중... 게임 취소
+                                </button>
+                            </form>
 
                         {% else %}
-                            {# TODO: 2번/4번 담당 반격 URL 생기면 연결 #}
-                            <a href="#" class="history-button">
+                            <a href="{% url 'games:counter' game.pk %}" class="history-button">
                                 CounterAttack
                             </a>
                         {% endif %}
