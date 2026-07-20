@@ -1,4 +1,4 @@
-{% load static %}
+{% load static socialaccount %}
 
 <!doctype html>
 <html lang="ko">
@@ -33,9 +33,19 @@
                         <button type="submit">로그아웃</button>
                     </form>
                 {% else %}
-                    {# 소셜 로그인만 사용하므로 최초 로그인이 곧 가입이라 두 링크의 목적지가 같음 #}
-                    <a href="{% url 'users:login' %}">로그인</a>
-                    <a href="{% url 'users:login' %}">회원가입</a>
+                    {% comment %}
+                        소셜 로그인만 사용하므로 최초 로그인이 곧 가입.
+                        메인 페이지 START 버튼과 동일하게 구글 로그인으로 바로 연결.
+                    {% endcomment %}
+                    <form method="post" action="{% provider_login_url 'google' %}">
+                        {% csrf_token %}
+                        <button type="submit">로그인</button>
+                    </form>
+
+                    <form method="post" action="{% provider_login_url 'google' %}">
+                        {% csrf_token %}
+                        <button type="submit">회원가입</button>
+                    </form>
                 {% endif %}
             </nav>
         </header>
