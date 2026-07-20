@@ -178,6 +178,7 @@
 }
 
 .record-button {
+    display: inline-block;
     min-width: 140px;
     margin-top: 16px;
     padding: 9px 24px;
@@ -191,6 +192,8 @@
     color: #3b3149;
     font-size: 18px;
     font-weight: 800;
+    text-align: center;
+    text-decoration: none;
 
     cursor: pointer;
 
