@@ -1,7 +1,82 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}게임 상세{% endblock %}
+
+{% block body_class %}game-page{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/game_detail.css' %}">
+{% endblock %}
 
 {% block content %}
-<p>공격자: {{ game.attacker }}</p>
-<p>방어자: {{ game.defender }}</p>
-<p>공격 카드: {{ game.attacker_card }}</p>
+<section class="game-detail-section">
+    <div class="game-detail-panel">
+
+        <h1 class="game-title">
+            {{ game.attacker }} VS {{ game.defender }}
+        </h1>
+
+        {% if game.is_completed %}
+            <div class="game-completed-content">
+                <p class="winning-rule">
+                    {% if game.winning_rule == "HIGH" %}
+                        숫자가 큰 사람이 이깁니다.
+                    {% elif game.winning_rule == "LOW" %}
+                        숫자가 작은 사람이 이깁니다.
+                    {% endif %}
+                </p>
+
+                <div class="card-result">
+                    <p>{{ game.attacker }} : {{ game.attacker_card }}</p>
+                    <p>{{ game.defender }} : {{ game.defender_card }}</p>
+                </div>
+
+                <div class="result-text">
+                    {% if game.winner == request.user %}
+                        <p>결과 : 승리</p>
+                    {% elif game.winner %}
+                        <p>결과 : 패배</p>
+                    {% else %}
+                        <p>결과 : 무승부</p>
+                    {% endif %}
+                </div>
+
+                <a href="#" class="game-button">
+                    전적목록
+                </a>
+            </div>
+
+        {% elif request.user == game.attacker %}
+            <div class="game-progress-content">
+                <div class="progress-text">
+                    <p>진행 중...</p>
+                    <p>나 : {{ game.attacker_card }}</p>
+                </div>
+
+                <div class="button-group">
+                    <a href="#" class="game-button">
+                        게임취소
+                    </a>
+
+                    <a href="#" class="game-button">
+                        전적목록
+                    </a>
+                </div>
+            </div>
+
+        {% else %}
+            <div class="game-response-content">
+                <a href="#" class="game-button">
+                    대응하기
+                </a>
+
+                <a href="#" class="game-button">
+                    전적목록
+                </a>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
 {% endblock %}

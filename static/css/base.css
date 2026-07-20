@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    color: #171023;
+    font-family: Arial, "Noto Sans KR", sans-serif;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+.site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-main {
+    flex: 1;
+}
+
+.site-footer {
+    min-height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    padding: 20px 70px;
+
+    background: linear-gradient(
+        90deg,
+        #6515ff 0%,
+        #7600ff 50%,
+        #6800ed 100%
+    );
+
+    color: #ffffff;
+}
+
+.site-footer p {
+    margin: 0;
+
+    font-size: 28px;
+    font-weight: 700;
+}

@@ -9,3 +9,5 @@ urlpatterns = [
     path("create/", views.game_create, name="create"),
     path("<int:pk>/", views.game_detail, name="detail"),
 ]
+
+
