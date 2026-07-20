@@ -1,16 +1,35 @@
 {% extends "base.html" %}
-{% load socialaccount %}
+{% load static socialaccount %}
+
+{% block title %}Piro Game{% endblock %}
+
+{% block body_class %}main-page{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
 
 {% block content %}
+<section class="main-section">
+
+    <h1 class="main-title">Piro Game</h1>
+
     {% if user.is_authenticated %}
-        <form method="post" action="{% url 'users:logout' %}">
-            {% csrf_token %}
-            <button type="submit">로그아웃하기</button>
-        </form>
+        <p class="main-user">{{ user }} 님이 로그인 중</p>
+
+        <div class="main-buttons">
+            <a href="{% url 'games:create' %}" class="main-button">START</a>
+            <a href="{% url 'games:history' %}" class="main-button">list</a>
+        </div>
+
     {% else %}
-        <form method="post" action="{% provider_login_url 'google' %}">
-            {% csrf_token %}
-            <button type="submit">로그인하기</button>
-        </form>
+        <div class="main-buttons">
+            <form method="post" action="{% provider_login_url 'google' %}">
+                {% csrf_token %}
+                <button type="submit" class="main-button">START</button>
+            </form>
+        </div>
     {% endif %}
+
+</section>
 {% endblock %}
