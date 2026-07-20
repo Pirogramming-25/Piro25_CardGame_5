@@ -17,7 +17,30 @@
 <body class="{% block body_class %}{% endblock %}">
     <div class="site-wrapper">
 
-        {# Header는 3번 담당자가 나중에 여기에 구현 #}
+        <header class="site-header">
+            <a href="{% url 'users:home' %}" class="site-logo">
+                Pirogrammer Card Game
+            </a>
+
+            <nav class="site-nav">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'games:create' %}">게임하기</a>
+
+                    {# TODO: 랭킹 URL(games:ranking) 생기면 연결 #}
+                    <a href="#">랭킹보기</a>
+
+                    <form method="post" action="{% url 'users:logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">로그아웃</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'users:login' %}">로그인</a>
+
+                    {# TODO: 회원가입 URL 생기면 연결 #}
+                    <a href="#">회원가입</a>
+                {% endif %}
+            </nav>
+        </header>
 
         <main class="site-main">
             {% block content %}{% endblock %}
