@@ -85,6 +85,13 @@
     min-height: 38px;
 }
 
+/* 게임 취소는 form으로 감싸여 있어, form이 칸 전체를 차지해야
+   안쪽 버튼의 width: 100%가 다른 버튼과 같은 폭이 됨 */
+.history-action form {
+    width: 100%;
+    margin: 0;
+}
+
 .history-result {
     color: #1c1030;
 
