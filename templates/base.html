@@ -1,11 +1,31 @@
+{% load static %}
+
 <!doctype html>
 <html lang="ko">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}피로그래머 카드 게임{% endblock %}</title>
+
+    <title>
+        {% block title %}Pirogrammer Card Game{% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block css %}{% endblock %}
 </head>
-<body>
-    {% block content %}{% endblock %}
+
+<body class="{% block body_class %}{% endblock %}">
+    <div class="site-wrapper">
+
+        {# Header는 3번 담당자가 나중에 여기에 구현 #}
+
+        <main class="site-main">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="site-footer">
+            <p>피로그래밍 25기 카드게임 5조</p>
+        </footer>
+    </div>
 </body>
 </html>
