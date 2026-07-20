@@ -1,5 +1,5 @@
 .counter-section {
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 200px);
     padding: 80px 20px;
 
     display: flex;
