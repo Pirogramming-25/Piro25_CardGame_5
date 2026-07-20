@@ -33,10 +33,9 @@
                         <button type="submit">로그아웃</button>
                     </form>
                 {% else %}
+                    {# 소셜 로그인만 사용하므로 최초 로그인이 곧 가입이라 두 링크의 목적지가 같음 #}
                     <a href="{% url 'users:login' %}">로그인</a>
-
-                    {# TODO: 회원가입 URL 생기면 연결 #}
-                    <a href="#">회원가입</a>
+                    <a href="{% url 'users:login' %}">회원가입</a>
                 {% endif %}
             </nav>
         </header>
