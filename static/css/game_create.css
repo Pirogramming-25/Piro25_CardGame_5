@@ -33,6 +33,12 @@
         inset 0 0 15px rgba(255, 255, 255, 0.16);
 }
 
+/* 자식의 align-self가 동작하도록 form을 flex 컨테이너로 둠 */
+.attack-form {
+    display: flex;
+    flex-direction: column;
+}
+
 .attack-label {
     margin: 0 0 18px;
 
