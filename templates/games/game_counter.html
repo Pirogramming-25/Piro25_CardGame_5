@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}반격하기{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/game_counter.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="counter-section">
+    <div class="counter-box">
+
+        <h1 class="counter-title">반격하기</h1>
+
+        <p class="counter-description">
+            상대의 공격에 사용할 카드를 선택해주세요.
+        </p>
+
+        <div class="card-list">
+            <label class="card-option">
+                <input type="radio" name="card" value="1">
+                <span class="number-card">1</span>
+            </label>
+
+            <label class="card-option">
+                <input type="radio" name="card" value="3">
+                <span class="number-card">3</span>
+            </label>
+
+            <label class="card-option">
+                <input type="radio" name="card" value="5">
+                <span class="number-card">5</span>
+            </label>
+
+            <label class="card-option">
+                <input type="radio" name="card" value="7">
+                <span class="number-card">7</span>
+            </label>
+
+            <label class="card-option">
+                <input type="radio" name="card" value="9">
+                <span class="number-card">9</span>
+            </label>
+        </div>
+
+        <button type="button" class="counter-button">
+            반격하기
+        </button>
+
+    </div>
+</section>
+{% endblock %}
