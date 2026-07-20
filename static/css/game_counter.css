@@ -11,7 +11,7 @@
             rgba(28, 12, 55, 0.35),
             rgba(28, 12, 55, 0.35)
         ),
-        url("../images/game_background.png") center / cover no-repeat;
+        url("../images/game_background.jpg") center / cover no-repeat;
 }
 
 .counter-box {
