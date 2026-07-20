@@ -13,43 +13,37 @@
         <h1 class="ranking-title">Piro 명예의 전당</h1>
 
         <div class="ranking-chart">
-            <article class="ranking-item ranking-first">
+            {% for ranked_user in users|slice:":3" %}
+            <article class="ranking-item {% if forloop.counter == 1 %}ranking-first{% elif forloop.counter == 2 %}ranking-second{% else %}ranking-third{% endif %}">
                 <div class="ranking-user">
-                    <strong>PLAYER 1</strong>
-                    <span>11</span>
+                    <strong>{{ ranked_user.username }}</strong>
+                    <span>{{ ranked_user.score }}</span>
                 </div>
 
                 <div class="ranking-bar">
-                    <span class="ranking-number">1</span>
+                    <span class="ranking-number">{{ forloop.counter }}</span>
                 </div>
             </article>
-
-            <article class="ranking-item ranking-second">
-                <div class="ranking-user">
-                    <strong>PLAYER 2</strong>
-                    <span>-1</span>
-                </div>
-
-                <div class="ranking-bar">
-                    <span class="ranking-number">2</span>
-                </div>
-            </article>
-
-            <article class="ranking-item ranking-third">
-                <div class="ranking-user">
-                    <strong>PLAYER 3</strong>
-                    <span>-6</span>
-                </div>
-
-                <div class="ranking-bar">
-                    <span class="ranking-number">3</span>
-                </div>
-            </article>
+            {% empty %}
+            <p class="ranking-empty">아직 랭킹에 오른 유저가 없습니다.</p>
+            {% endfor %}
         </div>
 
-        <button type="button" class="record-button">
+        {% if users|length > 3 %}
+        <ol class="ranking-list" start="4">
+            {% for ranked_user in users|slice:"3:" %}
+            <li class="ranking-list-item">
+                <span class="ranking-list-rank">{{ forloop.counter|add:"3" }}</span>
+                <span class="ranking-list-name">{{ ranked_user.username }}</span>
+                <span class="ranking-list-score">{{ ranked_user.score }}</span>
+            </li>
+            {% endfor %}
+        </ol>
+        {% endif %}
+
+        <a href="{% url 'games:history' %}" class="record-button">
             전적 목록
-        </button>
+        </a>
     </section>
 </div>
 {% endblock %}

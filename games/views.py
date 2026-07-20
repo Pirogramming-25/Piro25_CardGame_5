@@ -6,6 +6,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.views.decorators.http import require_POST
 
+from users.models import User
+
 from .forms import GameCounterForm, GameCreateForm
 from .models import Game
 
@@ -126,3 +128,9 @@ def game_cancel(request, pk):
     )
     game.delete()
     return redirect("games:history")
+
+
+@login_required
+def ranking(request):
+    users = User.objects.order_by("-score", "username")
+    return render(request, "games/ranking.html", {"users": users})
