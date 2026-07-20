@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}랭킹{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/ranking.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="ranking-page">
+    <section class="ranking-box">
+        <h1 class="ranking-title">Piro 명예의 전당</h1>
+
+        <div class="ranking-chart">
+            <article class="ranking-item ranking-first">
+                <div class="ranking-user">
+                    <strong>PLAYER 1</strong>
+                    <span>11</span>
+                </div>
+
+                <div class="ranking-bar">
+                    <span class="ranking-number">1</span>
+                </div>
+            </article>
+
+            <article class="ranking-item ranking-second">
+                <div class="ranking-user">
+                    <strong>PLAYER 2</strong>
+                    <span>-1</span>
+                </div>
+
+                <div class="ranking-bar">
+                    <span class="ranking-number">2</span>
+                </div>
+            </article>
+
+            <article class="ranking-item ranking-third">
+                <div class="ranking-user">
+                    <strong>PLAYER 3</strong>
+                    <span>-6</span>
+                </div>
+
+                <div class="ranking-bar">
+                    <span class="ranking-number">3</span>
+                </div>
+            </article>
+        </div>
+
+        <button type="button" class="record-button">
+            전적 목록
+        </button>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,220 @@
+.ranking-page {
+    min-height: calc(100vh - 90px);
+    padding: 85px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            rgba(92, 54, 173, 0.18),
+            rgba(92, 54, 173, 0.18)
+        ),
+        url("../images/game_background.png") center / cover no-repeat;
+}
+
+.ranking-box {
+    width: min(900px, 90%);
+    min-height: 610px;
+    padding: 70px 55px 65px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(215, 195, 241, 0.46);
+
+    border: 14px solid rgba(121, 51, 246, 0.78);
+    border-radius: 28px;
+
+    box-shadow:
+        0 0 14px rgba(110, 37, 245, 0.7),
+        inset 0 0 15px rgba(255, 255, 255, 0.16);
+}
+
+.ranking-title {
+    margin: 0 0 34px;
+
+    font-size: 36px;
+    font-weight: 800;
+    color: #08030d;
+    text-align: center;
+}
+
+.ranking-chart {
+    width: 100%;
+    min-height: 285px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.ranking-item {
+    width: 165px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ranking-user {
+    min-height: 52px;
+    margin-bottom: 7px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: #08030d;
+    text-align: center;
+}
+
+.ranking-user strong {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.ranking-user span {
+    margin-top: 2px;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.ranking-bar {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    padding-bottom: 21px;
+}
+
+.ranking-first .ranking-bar {
+    height: 215px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(70, 98, 239, 0.9),
+        rgba(99, 69, 214, 0.95)
+    );
+}
+
+.ranking-second .ranking-bar {
+    height: 130px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(190, 65, 232, 0.93),
+        rgba(174, 60, 220, 0.95)
+    );
+}
+
+.ranking-third .ranking-bar {
+    height: 55px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(224, 67, 194, 0.95),
+        rgba(211, 54, 180, 0.95)
+    );
+}
+
+.ranking-number {
+    color: #ffffff;
+    font-size: 29px;
+    font-weight: 900;
+}
+
+.record-button {
+    min-width: 140px;
+    margin-top: 16px;
+    padding: 9px 24px;
+
+    border: 2px solid #6221ff;
+    border-radius: 999px;
+
+    background: rgba(205, 193, 228, 0.96);
+    box-shadow: 0 4px 7px rgba(50, 28, 85, 0.32);
+
+    color: #3b3149;
+    font-size: 18px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background-color 0.15s ease;
+}
+
+.record-button:hover {
+    transform: translateY(-2px);
+    background: rgba(225, 216, 243, 0.98);
+}
+
+.record-button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .ranking-page {
+        padding: 45px 14px;
+    }
+
+    .ranking-box {
+        width: 94%;
+        min-height: 520px;
+        padding: 45px 20px;
+
+        border-width: 10px;
+        border-radius: 22px;
+    }
+
+    .ranking-title {
+        margin-bottom: 28px;
+        font-size: 27px;
+    }
+
+    .ranking-chart {
+        min-height: 230px;
+    }
+
+    .ranking-item {
+        width: 30%;
+        max-width: 130px;
+    }
+
+    .ranking-user strong {
+        font-size: 13px;
+    }
+
+    .ranking-user span {
+        font-size: 14px;
+    }
+
+    .ranking-first .ranking-bar {
+        height: 170px;
+    }
+
+    .ranking-second .ranking-bar {
+        height: 105px;
+    }
+
+    .ranking-third .ranking-bar {
+        height: 50px;
+    }
+
+    .ranking-number {
+        font-size: 24px;
+    }
+
+    .record-button {
+        font-size: 16px;
+    }
+}
