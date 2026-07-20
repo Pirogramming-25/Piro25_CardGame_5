@@ -40,6 +40,15 @@ def game_create(request):
 
 
 @login_required
+def game_history(request):
+    games = Game.objects.filter(
+        Q(attacker=request.user) | Q(defender=request.user),
+    ).select_related("attacker", "defender", "winner")
+
+    return render(request, "games/game_history.html", {"games": games})
+
+
+@login_required
 def game_detail(request, pk):
     game = get_object_or_404(
         Game.objects.filter(

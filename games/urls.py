@@ -7,6 +7,7 @@ app_name = "games"
 
 urlpatterns = [
     path("create/", views.game_create, name="create"),
+    path("history/", views.game_history, name="history"),
     path("<int:pk>/", views.game_detail, name="detail"),
 ]
 
