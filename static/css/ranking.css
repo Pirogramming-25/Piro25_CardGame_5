@@ -11,7 +11,7 @@
             rgba(92, 54, 173, 0.18),
             rgba(92, 54, 173, 0.18)
         ),
-        url("../images/game_background.png") center / cover no-repeat;
+        url("../images/game_background.jpg") center / cover no-repeat;
 }
 
 .ranking-box {
