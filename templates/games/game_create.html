@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}공격하기{% endblock %}
+
+{% block body_class %}attack-page{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/game_create.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="attack-section">
+    <div class="attack-panel">
+
+        <form method="post" class="attack-form">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <ul class="attack-errors">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div class="attack-field">
+                <p class="attack-label">내가 고른 카드 :</p>
+
+                <div class="card-choices">
+                    {{ form.attacker_card }}
+                </div>
+
+                {% for error in form.attacker_card.errors %}
+                    <p class="attack-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="attack-field attack-field-defender">
+                <label class="attack-label" for="{{ form.defender.id_for_label }}">
+                    Defender :
+                </label>
+
+                {{ form.defender }}
+
+                {% for error in form.defender.errors %}
+                    <p class="attack-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="attack-button">Attack</button>
+        </form>
+
+    </div>
+</section>
+{% endblock %}

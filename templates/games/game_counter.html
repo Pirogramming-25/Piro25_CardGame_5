@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}반격하기{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/game_counter.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="counter-section">
+    <div class="counter-box">
+
+        <h1 class="counter-title">반격하기</h1>
+
+        <p class="counter-description">
+            상대의 공격에 사용할 카드를 선택해주세요.
+        </p>
+
+        <form method="post" class="counter-form">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <ul class="attack-errors">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div class="card-list">
+                {% for radio in form.defender_card %}
+                    <label class="card-option">
+                        {{ radio.tag }}
+                        <span class="number-card">{{ radio.choice_label }}</span>
+                    </label>
+                {% endfor %}
+            </div>
+
+            {% for error in form.defender_card.errors %}
+                <p class="attack-error">{{ error }}</p>
+            {% endfor %}
+
+            <button type="submit" class="counter-button">
+                반격하기
+            </button>
+        </form>
+
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% load static socialaccount %}
+
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        {% block title %}Pirogrammer Card Game{% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block css %}{% endblock %}
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+    <div class="site-wrapper">
+
+        <header class="site-header">
+            <a href="{% url 'users:home' %}" class="site-logo">
+                Pirogrammer Card Game
+            </a>
+
+            <nav class="site-nav">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'games:create' %}">게임하기</a>
+
+                    <a href="{% url 'games:ranking' %}">랭킹보기</a>
+
+                    <form method="post" action="{% url 'users:logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">로그아웃</button>
+                    </form>
+                {% else %}
+                    {% comment %}
+                        소셜 로그인만 사용하므로 최초 로그인이 곧 가입.
+                        메인 페이지 START 버튼과 동일하게 구글 로그인으로 바로 연결.
+                    {% endcomment %}
+                    <form method="post" action="{% provider_login_url 'google' %}">
+                        {% csrf_token %}
+                        <button type="submit">로그인</button>
+                    </form>
+
+                    <form method="post" action="{% provider_login_url 'google' %}">
+                        {% csrf_token %}
+                        <button type="submit">회원가입</button>
+                    </form>
+                {% endif %}
+            </nav>
+        </header>
+
+        <main class="site-main">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="site-footer">
+            <p>피로그래밍 25기 카드게임 5조</p>
+        </footer>
+    </div>
+</body>
+</html>

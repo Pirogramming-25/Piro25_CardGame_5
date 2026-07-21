@@ -1,0 +1,187 @@
+.game-page {
+    background-image: url("../images/game_background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.game-detail-section {
+    min-height: calc(100vh - 200px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 90px 20px;
+}
+
+.game-detail-panel {
+    width: min(900px, 90%);
+    min-height: 620px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 70px 90px;
+
+    background: rgba(184, 166, 235, 0.48);
+
+    border: 16px solid rgba(132, 55, 255, 0.78);
+    border-radius: 28px;
+
+    box-shadow:
+        0 0 14px rgba(122, 44, 255, 0.72),
+        inset 0 0 12px rgba(255, 255, 255, 0.12);
+}
+
+.game-title {
+    margin: 0 0 28px;
+
+    color: #08010c;
+
+    font-size: 32px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.game-progress-content,
+.game-completed-content,
+.game-response-content {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.progress-text,
+.game-completed-content {
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.progress-text {
+    width: 440px;
+    max-width: 100%;
+
+    margin-bottom: 34px;
+}
+
+.progress-text p,
+.card-result p,
+.result-text p,
+.winning-rule {
+    margin: 7px 0;
+}
+
+.game-completed-content {
+    align-items: flex-start;
+
+    width: 440px;
+    max-width: 100%;
+}
+
+.game-completed-content .game-button {
+    align-self: center;
+
+    margin-top: 22px;
+}
+
+.winning-rule {
+    margin-bottom: 16px;
+}
+
+.card-result {
+    margin-bottom: 16px;
+}
+
+.result-text {
+    margin-bottom: 4px;
+}
+
+.button-group,
+.game-response-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.game-response-content {
+    margin-top: 42px;
+}
+
+.game-button {
+    min-width: 126px;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 9px 22px;
+
+    border: 2px solid #6221ff;
+    border-radius: 999px;
+
+    background: rgba(196, 177, 235, 0.9);
+
+    box-shadow: 0 3px 5px rgba(36, 10, 72, 0.38);
+
+    color: #332641;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.15s ease,
+        background-color 0.15s ease;
+}
+
+.game-button:hover {
+    transform: translateY(-2px);
+    background: rgba(214, 200, 244, 0.96);
+}
+
+.game-button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .game-detail-section {
+        padding: 45px 15px;
+    }
+
+    .game-detail-panel {
+        min-height: 520px;
+
+        padding: 45px 28px;
+
+        border-width: 10px;
+        border-radius: 22px;
+    }
+
+    .game-title {
+        margin-bottom: 24px;
+
+        font-size: 23px;
+    }
+
+    .progress-text,
+    .game-completed-content {
+        font-size: 17px;
+    }
+
+    .game-button {
+        min-width: 112px;
+
+        padding: 8px 18px;
+
+        font-size: 16px;
+    }
+}

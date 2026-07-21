@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}게임 전적{% endblock %}
+
+{% block body_class %}history-page{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/game_history.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="history-section">
+    <div class="history-panel">
+
+        <h1 class="history-title">History List</h1>
+
+        <p class="history-player">현재 플레이어 : {{ user }}</p>
+
+        <ul class="history-list">
+            {% for game in games %}
+                <li class="history-item">
+                    <span class="history-label">
+                        {{ game.pk }} - {{ game.attacker }} VS {{ game.defender }}
+                    </span>
+
+                    <span class="history-action">
+                        {% if game.is_completed %}
+                            <span class="history-result">
+                                {% if game.winner == user %}
+                                    결과: 승리
+                                {% elif game.winner %}
+                                    결과: 패배
+                                {% else %}
+                                    결과: 무승부
+                                {% endif %}
+                            </span>
+
+                        {% elif game.attacker == user %}
+                            <form method="post" action="{% url 'games:cancel' game.pk %}">
+                                {% csrf_token %}
+                                <button type="submit" class="history-button">
+                                    진행 중... 게임 취소
+                                </button>
+                            </form>
+
+                        {% else %}
+                            <a href="{% url 'games:counter' game.pk %}" class="history-button">
+                                CounterAttack
+                            </a>
+                        {% endif %}
+                    </span>
+
+                    <a href="{% url 'games:detail' game.pk %}" class="history-info-button">
+                        게임정보
+                    </a>
+                </li>
+            {% empty %}
+                <li class="history-empty">아직 진행한 게임이 없습니다.</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</section>
+{% endblock %}

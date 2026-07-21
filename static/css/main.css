@@ -1,0 +1,113 @@
+.main-section {
+    min-height: calc(100vh - 200px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 60px 20px;
+
+    background: url("../images/game_background.jpg") center / cover no-repeat;
+
+    /* 픽셀아트 원본이 587x360이라 확대 시 보간되어 뭉개지는 것을 방지 */
+    image-rendering: pixelated;
+}
+
+.main-title {
+    margin: 0 0 34px;
+
+    color: #08010c;
+
+    font-size: clamp(46px, 8vw, 108px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.main-user {
+    margin: 0 0 14px;
+
+    color: #1c1030;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.main-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+}
+
+.main-buttons form {
+    margin: 0;
+}
+
+.main-button {
+    min-width: 138px;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 11px 26px;
+
+    border: 2px solid #6221ff;
+    border-radius: 999px;
+
+    background: rgba(196, 177, 235, 0.9);
+
+    box-shadow: 0 3px 5px rgba(36, 10, 72, 0.38);
+
+    color: #332641;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background-color 0.15s ease;
+}
+
+.main-button:hover {
+    transform: translateY(-2px);
+    background: rgba(214, 200, 244, 0.96);
+}
+
+.main-button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .main-section {
+        min-height: calc(100vh - 180px);
+
+        padding: 45px 16px;
+    }
+
+    .main-title {
+        margin-bottom: 26px;
+    }
+
+    .main-user {
+        font-size: 15px;
+    }
+
+    .main-buttons {
+        gap: 14px;
+    }
+
+    .main-button {
+        min-width: 112px;
+
+        padding: 9px 18px;
+
+        font-size: 16px;
+    }
+}
